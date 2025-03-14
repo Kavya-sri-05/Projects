@@ -1,0 +1,139 @@
+.dashboard-main {
+    margin-top: 80px;
+    padding: 2rem;
+}
+
+.user-profile {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.create-post-section {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#postForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#postForm input,
+#postForm textarea {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#postForm textarea {
+    min-height: 200px;
+    resize: vertical;
+}
+
+.media-upload {
+    border: 2px dashed #ddd;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.media-upload i {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+
+#preview {
+    margin-top: 1rem;
+}
+
+#preview img,
+#preview video {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 5px;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.my-posts,
+.recommended {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.post-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.post-card img,
+.post-card video {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.header-profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #007bff;
+    margin-right: 10px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+.upload-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #89b9ed;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}

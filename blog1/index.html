@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Blog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Modern<span>Blog</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#featured">Featured</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="login.html" class="login-link">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero" id="home">
+        <h1>Welcome to Modern Blog</h1>
+        <p>Discover stories, ideas, and expertise from our writers</p>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search articles...">
+            <button onclick="searchPosts()"><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+
+    <main>
+        <div class="container">
+            <section class="featured-section" id="featured">
+                <h2>Featured Posts</h2>
+                <div class="blog-posts" id="posts-container">
+                    <!-- Posts added dynamically -->
+                </div>
+            </section>
+
+            <aside class="sidebar">
+                <div class="categories" id="categories">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="#">Technology</a></li>
+                        <li><a href="#">Travel</a></li>
+                        <li><a href="#">Lifestyle</a></li>
+                        <li><a href="#">Food</a></li>
+                    </ul>
+                </div>
+
+                <div class="newsletter">
+                    <h3>Subscribe to Newsletter</h3>
+                    <form id="newsletterForm">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+
+                <div class="recent-posts">
+                    <h3>Recent Posts</h3>
+                    <div id="recentPostsList">
+                        <!-- Recent posts added dynamically -->
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <section id="about" class="about-section">
+            <h2>About Us</h2>
+            <div class="about-content">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="Team">
+                <div class="about-text">
+                    <h3>Our Story</h3>
+                    <p>We are passionate about sharing knowledge and stories that inspire. Our team of writers brings diverse perspectives and expertise to create engaging content.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Contact Us</h2>
+            <div class="contact-container">
+                <form id="contactForm">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo">Modern<span>Blog</span></div>
+                <p>Sharing knowledge and stories since 2024</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Modern Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

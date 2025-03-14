@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Modern Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Modern<span>Blog</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#my-posts">My Posts</a></li>
+                <li><a href="#create-post">Create Post</a></li>
+                <li><a href="#" id="logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dashboard-main">
+        <section class="user-profile"> 
+            <div class="profile-header">
+                <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-pic">
+                <h2>Welcome, <span id="username">User</span></h2>
+            </div>
+        </section>
+
+        <section id="create-post" class="create-post-section">
+            <h2>Create New Post</h2>
+            <form id="postForm">
+                <input type="text" placeholder="Post Title" required>
+                <textarea placeholder="Write your post content..." required></textarea>
+                
+                <div class="media-upload">
+                    <label for="media-file">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        Upload Photo/Video
+                    </label>
+                    <input type="file" id="media-file" accept="image/*,video/*" hidden>
+                    <div id="preview"></div>
+                </div>
+
+                <button type="submit">Publish Post</button>
+            </form>
+        </section>
+
+        <section class="content-grid">
+            <div class="my-posts" id="my-posts">
+                <h2>My Posts</h2>
+                <div class="posts-container">
+                    <!-- User's posts will be loaded here -->
+                </div>
+            </div>
+
+            <div class="recommended">
+                <h2>Recommended For You</h2>
+                <div class="recommended-posts">
+                    <!-- Recommended posts will be loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
