@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Time Tracker</title>
+    <style>
+        body {
+            width: 400px;
+            padding: 15px;
+            font-family: Arial, sans-serif;
+        }
+        .report-container {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+        .report-stats {
+            display: grid;
+            gap: 10px;
+        }
+        .stat-item {
+            padding: 5px;
+            border-bottom: 1px solid #eee;
+        }
+        #blockedList {
+            list-style: none;
+            padding: 0;
+        }
+        .remove-btn {
+            margin-left: 10px;
+            padding: 2px 5px;
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        input, button {
+            margin: 5px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="timeStats"></div>
+    <div class="block-section">
+        <h2>Block Sites</h2>
+        <input type="text" id="blockSite" placeholder="Enter domain to block">
+        <button id="addBlock">Block Site</button>
+        <ul id="blockedList"></ul>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
