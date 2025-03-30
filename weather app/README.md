@@ -108,3 +108,6 @@ This weather application offers users accurate weather data, forecasts, and weat
 - Responsive design
 - Accessibility
 - Performance optimization
+
+## output 
+![Image](https://github.com/user-attachments/assets/7dfb2636-d476-4a52-b764-a1ca3aeb03b1)
