@@ -84,3 +84,7 @@ This Chrome extension helps users manage their browser tabs effectively, save im
 - Educational purposes
 - Project organization
 - Resource management
+
+##output
+![Image](https://github.com/user-attachments/assets/ccf60c52-4e54-4509-a498-31da350d5828)
+![Image](https://github.com/user-attachments/assets/2311cb4e-e2b4-429d-8cb2-13500fce82d2)
