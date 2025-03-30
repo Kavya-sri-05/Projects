@@ -49,3 +49,6 @@ This chat application can be utilized in various scenarios:
 - Social networking
 - Educational platforms
 - Gaming communities
+
+- ## output
+- ![Image](https://github.com/user-attachments/assets/7dfb2636-d476-4a52-b764-a1ca3aeb03b1)
