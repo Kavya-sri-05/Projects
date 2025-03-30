@@ -1,62 +1,83 @@
-let timeTracker = {};
-let activeTabId = null;
-let lastUpdateTime = Date.now();
+let timeData = {};
+let isTracking = false;
+let currentTab = null;
+let startTime = null;
 
-// Track active tab changes
-chrome.tabs.onActivated.addListener(async (activeInfo) => {
-  const tab = await chrome.tabs.get(activeInfo.tabId);
-  updateTimeForPreviousTab();
-  activeTabId = activeInfo.tabId;
-  lastUpdateTime = Date.now();
-  if (tab.url) {
-    const domain = new URL(tab.url).hostname;
-    initializeTracker(domain);
-  }
-});
-
-// Track URL changes
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  if (changeInfo.status === 'complete' && tab.active) {
-    updateTimeForPreviousTab();
-    if (tab.url) {
-      const domain = new URL(tab.url).hostname;
-      initializeTracker(domain);
+// Initialize or load saved data
+chrome.storage.local.get(['timeData', 'lastResetDate'], (result) => {
+    if (result.timeData) {
+        timeData = result.timeData;
     }
-    lastUpdateTime = Date.now();
-    activeTabId = tabId;
-  }
+    
+    // Check for day reset
+    const today = new Date().toDateString();
+    if (!result.lastResetDate || result.lastResetDate !== today) {
+        timeData = {};
+        chrome.storage.local.set({ 
+            timeData: timeData,
+            lastResetDate: today
+        });
+    }
 });
 
-function initializeTracker(domain) {
-  if (!timeTracker[domain]) {
-    timeTracker[domain] = {
-      totalTime: 0,
-      lastVisit: Date.now()
-    };
-  }
+// Track active tab
+chrome.tabs.onActivated.addListener(async (activeInfo) => {
+    try {
+        const tab = await chrome.tabs.get(activeInfo.tabId);
+        handleTabChange(tab);
+    } catch (error) {
+        console.error('Error getting tab:', error);
+    }
+});
+
+chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
+    if (changeInfo.status === 'complete' && tab.active) {
+        handleTabChange(tab);
+    }
+});
+
+function handleTabChange(tab) {
+    if (currentTab) {
+        updateTimeForDomain(currentTab);
+    }
+    
+    currentTab = tab;
+    startTime = Date.now();
+    isTracking = true;
 }
 
-function updateTimeForPreviousTab() {
-  if (activeTabId) {
-    chrome.tabs.get(activeTabId, (tab) => {
-      if (chrome.runtime.lastError) return;
-      
-      if (tab && tab.url) {
-        const domain = new URL(tab.url).hostname;
-        const now = Date.now();
-        const timeSpent = Math.floor((now - lastUpdateTime) / 1000); // Convert to seconds
-        
-        if (timeTracker[domain]) {
-          timeTracker[domain].totalTime += timeSpent;
-          chrome.storage.local.set({ timeData: timeTracker });
-        }
-      }
-    });
-  }
+function updateTimeForDomain(tab) {
+    if (!startTime || !isTracking) return;
+
+    const url = new URL(tab.url);
+    const domain = url.hostname;
+    const timeSpent = Math.floor((Date.now() - startTime) / 1000);
+
+    if (!timeData[domain]) {
+        timeData[domain] = { totalTime: 0 };
+    }
+    timeData[domain].totalTime += timeSpent;
+
+    chrome.storage.local.set({ timeData });
+    startTime = Date.now();
 }
 
-// Update time every 1 second for active tab
+// Update time every minute
 setInterval(() => {
-  updateTimeForPreviousTab();
-  lastUpdateTime = Date.now();
-}, 1000);
+    if (currentTab) {
+        updateTimeForDomain(currentTab);
+    }
+}, 60000);
+
+// Listen for window focus changes
+chrome.windows.onFocusChanged.addListener((windowId) => {
+    if (windowId === chrome.windows.WINDOW_ID_NONE) {
+        isTracking = false;
+        if (currentTab) {
+            updateTimeForDomain(currentTab);
+        }
+    } else {
+        isTracking = true;
+        startTime = Date.now();
+    }
+});
